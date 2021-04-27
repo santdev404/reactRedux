@@ -1,31 +1,43 @@
 import React from 'react'
+import moment from 'moment';
 
-export const JournalEntry = () => {
+export const JournalEntry = ({id, date, title, body, url}) => {
 
+    const noteDate = moment(date);
+
+    const handleEntryClick = () =>{
+        //dispatch
+        console.log("no time")
+    }
 
 
     return (
-        <div className="journal__entry pointer">
-            <div 
-                className="journal__entry-picture"
-                style={{
-                    backgroundSize: 'cover',
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1522152586713-56bab67de1b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)'
-                }}
-            ></div>
+        <div 
+            onClick={handleEntryClick}
+            className="journal__entry pointer">
+
+            {
+                url &&
+                <div 
+                    className="journal__entry-picture"
+                    style={{
+                        backgroundSize: 'cover',
+                        backgroundImage: `url(${url})` }}
+                ></div>
+            }
 
             <div className="journal__entry-body">
                 <p className="journal__entry-title">
-                    Fuck off
+                    {title}
                 </p>
                 <p className="journal__entry-content">
-                    The winter has gone
+                    {title}
                 </p>
             </div>
 
             <div className="journal__entry-date-box">
-                <span>Monday</span>
-                <h4>28</h4>
+                <span>{noteDate.format('dddd')}</span>
+                <h4>{noteDate.format('Do')}</h4>
             </div>
 
             
